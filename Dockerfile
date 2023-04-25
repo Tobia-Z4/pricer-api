@@ -1,7 +1,7 @@
 # Dockerコマンド/Githubアクション実行
 FROM python:3.9.6
 
-LABEL maintainer "Takmi Fujita <xxxxx@gmail.com>"
+LABEL maintainer "hoge hoge <xxxxx@gmail.com>"
 LABEL version="0.1"
 LABEL description="stockpricer"
 
