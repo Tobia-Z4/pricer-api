@@ -1,0 +1,2 @@
+# Module - beans
+name = "beans"

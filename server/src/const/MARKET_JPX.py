@@ -1,0 +1,9 @@
+# MARKET_JPX -*- coding: utf-8 -*-
+
+MARKET_CODE = 'JPX'
+
+MARKET_NAME = '日本取引所グループ（JPX）'
+
+MARKET_STOCK_CODE = 'TYO'
+
+MARKET_STOCK_CODE_API = '.T'

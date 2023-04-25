@@ -1,0 +1,38 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Start Main",
+      "type": "python",
+      "request": "launch",
+      "program": "./server/Main.py",
+      "console": "integratedTerminal",
+      "args": [ "--service", "SBOC0003", "--parallel_processing", "true" ]
+    },
+    {
+      "name": "Python: TEST",
+      "type": "python",
+      "request": "launch",
+      "program": "./server/Test.py",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Start Main for API",
+      "type": "python",
+      "request": "launch",
+      "program": "./server/Main.py",
+      "console": "integratedTerminal",
+      "args": [ "--service", "pricer-app", "--parallel_processing", "true" ]
+    },
+    {
+      "name": "Python: API START",
+      "type": "python",
+      "request": "launch",
+      "program": "./server/start_api.py",
+      "console": "integratedTerminal"
+    }
+  ]
+}

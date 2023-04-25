@@ -1,0 +1,12 @@
+{
+  "ME0001":"{0} has Exception: ERROR",
+  "ME0002":"Getting Stock Price: {0} From Yahoo Finance Api is {1}",
+  "ME0003":"Stock Code: {0} has no data.",
+  "ME0004":"Getting Market Price for Stock Code: {0} with pandas is {1}",
+  "ME0005":"Insert Stock Price: {0} for Today is {1}",
+  "ME0006":"message: {0}",
+  "ME0007":"Output Excel: {0}",
+  "ME0008":"The Module({name}) processed at {base_date}. Time Record (Before={bf_time}, After={af_time}, Total={total})",
+  "ME0009":"Service: {name} processed at {base_date}. Time Record (Before={bf_time}, After={af_time}, Total={total})",
+  "ME0010":"Output CSV for Stock Code:{0} is {1}"
+}

@@ -1,0 +1,22 @@
+{
+  "SBOC0000": {
+    "SERVICE": "pricer-app",
+    "TARGET": "app.py",
+    "SUMMARY": "Pricer API"
+  },
+  "SBOC0001": {
+    "SERVICE": "SBOC0001",
+    "TARGET": "Sboc0001.py",
+    "SUMMARY": "Update Stock List from JPX"
+  },
+  "SBOC0002": {
+    "SERVICE": "SBOC0002",
+    "TARGET": "Sboc0002.py",
+    "SUMMARY": "INSERT stock price from Yahoo Finance API"
+  },
+  "SBOC0003": {
+    "SERVICE": "SBOC0003",
+    "TARGET": "Sboc0003.py",
+    "SUMMARY": "Output stock price to CSV from Yahoo Finance API"
+  }
+}

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQLmapper">
+  <select id="getMarketCode">
+    SELECT * FROM m_market WHERE market_code = '{market_code}'
+  </select>
+  <insert id="InsertTStockDataFromWJpx">
+    INSERT INTO mybase.t_stock_data(
+      base_date, 
+      stock_code, 
+      stock_name, 
+	    market_code,
+	    market_segment_code, 
+	    total_industry_code, 
+	    sub_industry_code, 
+	    scale_code, 
+	    delete_flg, 
+	    create_date, 
+	    create_user_id, 
+	    update_date, 
+	    update_user_id)
+    SELECT 
+    ws.base_date, 
+    ws.stock_code, 
+    ws.stock_name,
+    mm.market_code,
+    mm.market_segment_code, 
+    ws.total_industry_code, 
+    ws.sub_industry_code,
+    ws.scale_code,
+    ws.delete_flg,
+    ws.create_date, 
+    ws.create_user_id, 
+    ws.update_date, 
+    ws.update_user_id
+    FROM w_stock_data_jpx AS ws
+    LEFT JOIN m_market AS mm
+    ON ws.market_segment = mm.market_segment
+  </insert>
+  <select id="getMarketCodeByStockCode">
+    SELECT
+      market_code
+    FROM t_stock_data
+    WHERE stock_code = '{stock_code}'
+    AND base_date IN (SELECT MAX(base_date) 
+        FROM t_stock_data WHERE stock_code = '{stock_code}')
+  </select>
+  <insert id="insertStockPriceToWYahoo">
+    INSERT INTO y_market_price_data
+    VALUES ('{0}', '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, '{9}', CURRENT_TIMESTAMP, '{10}', CURRENT_TIMESTAMP, '{10}')
+  </insert>
+  <select id="getDatafromWYahooByStockCode">
+    SELECT 
+    insert_date, 
+    stock_code, 
+    stock_code_api, 
+    time_stamp
+    FROM y_market_price_data
+    WHERE stock_code = '{stock_code}'
+  </select>
+  <select id="checkDataIntoWYahoo">
+    SELECT 
+    insert_date, 
+    stock_code, 
+    stock_code_api, 
+    time_stamp
+    FROM y_market_price_data
+    WHERE stock_code = '{stock_code}'
+    AND time_stamp = '{time_stamp}'
+  </select>
+  <select id="getAllStockList">
+    SELECT * FROM ST_STOCK_LIST_V
+  </select>
+  <select id="getStockPriceByStockCode">
+    SELECT 
+    stock_code, 
+    stock_code_api, 
+    time_stamp, 
+    open_rate, 
+    low_rate, 
+    high_rate, 
+    close_rate, 
+    volume
+    FROM y_market_price_data
+    WHERE stock_code = '{stock_code}'
+    AND delete_flg = '{delete_flg}'
+  </select>
+  <select id="getStockCodeApiByStockCode">
+    SELECT 
+    stock_code, 
+    stock_code_api, 
+    time_stamp, 
+    open_rate, 
+    low_rate, 
+    high_rate, 
+    close_rate, 
+    volume
+    FROM y_market_price_data
+    WHERE stock_code = '{stock_code}'
+    AND delete_flg = '{delete_flg}'
+  </select>
+  <select id="getStockCodeApi">
+    SELECT stock_code_api FROM ST_STOCK_LIST_V
+    WHERE stock_code = '{stock_code}'
+  </select>
+  <insert id="insrtMarketPriceForDaily">
+    INSERT INTO w_market_price_data
+    VALUES ('{0}', '{1}', '{2}', '{3}', {4}, {5}, {6}, {7}, {8}, '{9}', CURRENT_TIMESTAMP, '{10}')
+  </insert>
+  <select id="getStockCodeApi">
+    SELECT stock_code_api FROM ST_STOCK_LIST_V
+    WHERE stock_code = '{stock_code}'
+  </select>
+  <select id="getWStockDataByBaseDate">
+    SELECT * FROM w_stock_data_jpx
+    WHERE base_date = '{0}'
+  </select>
+  <insert id="insrtWStockData">
+    INSERT INTO w_stock_data_jpx
+	  VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', CURRENT_TIMESTAMP, '{11}', CURRENT_TIMESTAMP, '{11}')
+  </insert>
+</mapper>

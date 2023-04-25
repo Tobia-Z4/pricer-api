@@ -1,0 +1,2 @@
+# Module - Const
+name = "const"
